@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="Desafio_Tecnico.Api/Desafio_Tecnico.Api.csproj" />
+  <Project Path="Desafio_Tecnico.Application/Desafio_Tecnico.Application.csproj" />
+  <Project Path="Desafio_Tecnico.Domain/Desafio_Tecnico.Domain.csproj" />
+  <Project Path="Desafio_Tecnico.Infrastructure/Desafio_Tecnico.Infrastructure.csproj" />
+</Solution>
