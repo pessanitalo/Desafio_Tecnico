@@ -3,4 +3,5 @@
   <Project Path="Desafio_Tecnico.Application/Desafio_Tecnico.Application.csproj" />
   <Project Path="Desafio_Tecnico.Domain/Desafio_Tecnico.Domain.csproj" />
   <Project Path="Desafio_Tecnico.Infrastructure/Desafio_Tecnico.Infrastructure.csproj" />
+  <Project Path="Desafio_Tecnico.Tests/Desafio_Tecnico.Tests.csproj" Id="1e46ba0f-0260-40db-9a8c-df44a33448c9" />
 </Solution>
