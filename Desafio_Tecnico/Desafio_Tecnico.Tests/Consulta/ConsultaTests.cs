@@ -5,6 +5,23 @@ namespace Desafio_Tecnico.Tests.Consulta
 {
     public class ConsultaTests
     {
+        private static DateTime NextBusinessDay(DateTime date)
+        {
+            var candidate = date.Date;
+
+            while (candidate.DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday)
+            {
+                candidate = candidate.AddDays(1);
+            }
+
+            return candidate;
+        }
+
+        private static DateTime NextBusinessDayAfter(DateTime date)
+        {
+            return NextBusinessDay(date.Date.AddDays(1));
+        }
+
         #region Data Validation
 
         [Fact]
@@ -20,19 +37,17 @@ namespace Desafio_Tecnico.Tests.Consulta
         [Fact]
         public void Criar_Consulta_DataHoje_DeveCriarComSucesso()
         {
-            var dataHoje = DateTime.Today;
-            var horaValida = TimeSpan.FromHours(10);
+            var dataHoje = NextBusinessDay(DateTime.Today);
 
             var dataConsulta = new DataConsulta(dataHoje);
 
-            Assert.Equal(dataHoje, dataConsulta.Data);
+            Assert.Equal(dataHoje.Date, dataConsulta.Data);
         }
 
         [Fact]
         public void Criar_Consulta_DataFutura_DeveCriarComSucesso()
         {
-            var dataFutura = DateTime.Today.AddDays(5);
-            var horaValida = TimeSpan.FromHours(10);
+            var dataFutura = NextBusinessDayAfter(DateTime.Today.AddDays(5));
 
             var dataConsulta = new DataConsulta(dataFutura);
 
@@ -99,7 +114,7 @@ namespace Desafio_Tecnico.Tests.Consulta
         [Fact]
         public void Consulta_Criar_DeveRetornarConsultaComDadosCorretos()
         {
-            var dataFutura = DateTime.Today.AddDays(1);
+            var dataFutura = NextBusinessDayAfter(DateTime.Today);
             var horaValida = TimeSpan.FromHours(14);
             int pacienteId = 1;
             int profissionalId = 2;
@@ -125,7 +140,7 @@ namespace Desafio_Tecnico.Tests.Consulta
         [Fact]
         public void Consulta_Criar_ComHoraInvalida_DeveLancarExcecao()
         {
-            var dataFutura = DateTime.Today.AddDays(1);
+            var dataFutura = NextBusinessDayAfter(DateTime.Today);
             var horaInvalida = TimeSpan.FromHours(20);
 
             Assert.Throws<DomainExceptionValidation>(() =>

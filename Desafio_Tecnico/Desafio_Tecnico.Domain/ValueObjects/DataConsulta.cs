@@ -16,10 +16,10 @@ namespace Desafio_Tecnico.Domain.ValueObjects
                 "Data da consulta não pode ser no passado."
             );
 
-            // DomainExceptionValidation.When(
-            //      EhFimDeSemana(somenteData),
-            //      "Consulta não pode ser marcada para fim de semana."
-            //  );
+            DomainExceptionValidation.When(
+                 EhFimDeSemana(somenteData),
+                 "Consulta não pode ser marcada para fim de semana."
+             );
 
             Data = somenteData;
         }

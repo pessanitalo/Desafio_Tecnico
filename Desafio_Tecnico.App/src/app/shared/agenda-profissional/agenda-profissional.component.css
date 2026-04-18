@@ -1,0 +1,27 @@
+.agenda-label {
+  color: #2c6a8f;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.agenda-feedback {
+  padding: 18px;
+  background-color: #f4f8fb;
+  border: 1px dashed #c8d8e6;
+  border-radius: 14px;
+  color: #4d6478;
+}
+
+.agenda-feedback-error {
+  background-color: #fff4f4;
+  border-color: #efc0c0;
+  color: #9f2d2d;
+}
+
+@media (max-width: 768px) {
+  .table-responsive {
+    font-size: 14px;
+  }
+}

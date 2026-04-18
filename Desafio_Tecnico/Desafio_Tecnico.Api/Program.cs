@@ -1,13 +1,4 @@
 using Desafio_Tecnico.Api.DependencyInjection;
-using Desafio_Tecnico.Application.Consulta.UseCases;
-using Desafio_Tecnico.Application.Login.UseCases;
-using Desafio_Tecnico.Application.Paciente.UseCases;
-using Desafio_Tecnico.Application.Profissional.UseCases;
-using Desafio_Tecnico.Application.Usuario.UseCases;
-using Desafio_Tecnico.Domain.Repositories;
-using Desafio_Tecnico.Domain.Service;
-using Desafio_Tecnico.Infrastructure.Persistence.Repository;
-using Desafio_Tecnico.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using System.Data;

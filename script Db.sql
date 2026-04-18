@@ -47,3 +47,23 @@ select * from Profissional;
 select * from Consulta;
 select * from Usuario;
 select * from RefreshToken;
+
+select * from Consulta where ProfissionalId = 2;
+
+
+
+DECLARE @PacienteId INT = 1;
+DECLARE @ProfissionalId INT = 2;
+DECLARE @DataConsulta DATE = '2026-04-20';
+DECLARE @HoraInicio TIME = '12:00:00';
+DECLARE @HoraFim TIME = '12:30:00';
+
+SELECT COUNT(*) 
+FROM Consulta 
+WHERE DataConsulta = @DataConsulta
+AND HoraConsulta < @HoraFim
+AND DATEADD(MINUTE, 30, HoraConsulta) > @HoraInicio
+AND (
+    ProfissionalId = @ProfissionalId
+    OR PacienteId = @PacienteId
+);

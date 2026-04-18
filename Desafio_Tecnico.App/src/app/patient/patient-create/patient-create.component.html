@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row justify-content-center mt-5 py-4">
+        <div class="col-md-6 margin-top">
+            <form (ngSubmit)="adicionar()" novalidate [formGroup]="Form">
+                <div formGroupName="paciente">
+                    <!-- Campo Nome -->
+                    <div class="form-group mb-4">
+                        <label class="control-label mb-2 d-block">Nome</label>
+                        <input class="form-control" id="nome" type="text" formControlName="nome" placeholder="Digite o nome do paciente" />
+                    </div>
+
+                    <!-- Campo CPF -->
+                    <div class="form-group mb-5">
+                        <label class="control-label mb-2 d-block">CPF</label>
+                        <input class="form-control" id="cpf" type="text" formControlName="cpf" placeholder="Digite o CPF do paciente" mask="000.000.000-00" />
+                    </div>
+
+                    <!-- Botões de ação -->
+                    <div class="form-group d-flex gap-3 pt-3">
+                        <button type="submit" class="btn btn-primary flex-grow-1" [disabled]="!Form.valid">Salvar</button>
+                        <button type="button" class="btn btn-success flex-grow-1" [routerLink]="['/pacientes-lista']">Voltar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
