@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="row justify-content-center mt-5 py-4">
+        <div class="col-md-6 margin-top">
+            <form [formGroup]="Form" (ngSubmit)="onSubmit()">
+                <div class="form-group mb-4">
+                    <label class="control-label mb-2 d-block">CPF do Medico</label>
+                    <input type="text" class="form-control" id="cpfProfissional" formControlName="cpfProfissional"
+                        placeholder="Digite o CPF do medico" mask="000.000.000-00">
+                </div>
+
+                <div class="form-group mb-4">
+                    <label class="control-label mb-2 d-block">Nome do Medico</label>
+                    <input type="text" class="form-control" formControlName="medicoNome" placeholder="Nome do medico"
+                        readonly>
+                </div>
+
+                <div class="form-group mb-3">
+                    <button type="button" class="btn btn-primary" (click)="buscarMedico()">
+                        Pesquisar Medico
+                    </button>
+                </div>
+
+                <div class="form-group mb-4">
+                    <label class="control-label mb-2 d-block">CPF do Paciente</label>
+                    <input type="text" class="form-control" id="cpfPaciente" formControlName="cpfPaciente"
+                        mask="000.000.000-00" placeholder="Digite o CPF do paciente">
+                </div>
+
+                <div class="form-group mb-4">
+                    <label class="control-label mb-2 d-block">Nome do Paciente</label>
+                    <input type="text" class="form-control" formControlName="pacienteNome"
+                        placeholder="Nome do paciente" readonly>
+                </div>
+
+                <div class="form-group mb-4">
+                    <button type="button" class="btn btn-primary" (click)="buscarPaciente()">
+                        Pesquisar Paciente
+                    </button>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label mb-2 d-block">Data da Consulta</label>
+                            <input class="form-control" id="dataConsulta" type="text" formControlName="dataConsulta"
+                                mask="00/00/0000" [dropSpecialCharacters]="false" placeholder="dd/MM/yyyy" />
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label mb-2 d-block">Horario da Consulta</label>
+                            <select class="form-select" formControlName="horaConsulta">
+                                <option disabled selected value="">
+                                    {{ horarios.length > 0 ? 'Selecione um horario' : 'Nenhum horario disponivel' }}
+                                </option>
+                                <option *ngFor="let hora of horarios" [value]="hora">
+                                    {{ hora }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group d-flex gap-3 pt-3">
+                    <button type="submit" class="btn btn-primary flex-grow-1" [disabled]="!Form.valid">Salvar</button>
+                    <button type="button" class="btn btn-success flex-grow-1" [routerLink]="['/consultas-lista']">
+                        Voltar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
