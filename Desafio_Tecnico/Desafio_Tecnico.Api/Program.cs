@@ -1,3 +1,4 @@
+using Desafio_Tecnico.Api.DependencyInjection;
 using Desafio_Tecnico.Application.Consulta.UseCases;
 using Desafio_Tecnico.Application.Login.UseCases;
 using Desafio_Tecnico.Application.Paciente.UseCases;
@@ -34,40 +35,13 @@ builder.Services.Configure<ApiBehaviorOptions>(options =>
     };
 });
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IDbConnection>(_ =>
     new SqlConnection(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<ICreatePacienteUseCase, CreatePacienteUseCase>();
-builder.Services.AddScoped<ICreateProfissionalUseCase, CreateProfissionalUseCase>();
-builder.Services.AddScoped<ICreateConsultaUseCase, CreateConsultaUseCase>();
-
-builder.Services.AddScoped<IConsultaRepository, ConsultaRepository>();
-builder.Services.AddScoped<IPacienteRepository, PacienteRepository>();
-builder.Services.AddScoped<IProfissionalRepository, ProfissionalRepository>();
-
-builder.Services.AddScoped<ICreateUsuarioUseCase, CreateUsuarioUseCase>();
-builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-
-builder.Services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
-builder.Services.AddScoped<IGetAllPacienteUseCase, GetAllPacienteUseCase>();
-
-builder.Services.AddScoped<IGetAllProfissionalUseCase, GetAllProfissionalUseCase>();
-builder.Services.AddScoped<IObterDetalheConsultaUseCase, ObterDetalheConsultaUseCase>();
-builder.Services.AddScoped<IObterTodasConsultasUseCase, ObterTodasConsultasUseCase>();
-builder.Services.AddScoped<IPesquisarPacientePorCpfUseCase, PesquisarPacientePorCpfUseCase>();
-
-builder.Services.AddScoped<IObterProfissionalUseCase, ObterProfissionalUseCase>();
-builder.Services.AddScoped<IObterProfissionalUseCase, ObterProfissionalUseCase>();
-
-builder.Services.AddScoped<ITokenService, TokenService>();
-builder.Services.AddScoped<IPasswordHasherService, PasswordHasherService>();
-builder.Services.AddScoped<IObterAgendaPorProfissionalIdUseCase, ObterAgendaPorProfissionalIdUseCase>();
-
-builder.Services.AddScoped<ILoginUseCase, LoginUseCase>();
+builder.Services.AddApplicationservices();
 
 var app = builder.Build();
 
