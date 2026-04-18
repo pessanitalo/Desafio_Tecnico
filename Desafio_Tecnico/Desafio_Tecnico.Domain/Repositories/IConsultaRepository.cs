@@ -8,5 +8,6 @@ namespace Desafio_Tecnico.Domain.Repositories
         Task<IEnumerable<Consulta>> ObterTodasConsultasIdAsync();
         Task<Consulta> GetByConsultaAgendada(int pacienteId, int profissionalId, DateTime dataConsulta, TimeSpan horaConsulta);
         Task<IEnumerable<Consulta>> ObterAgendaPorProfissionalIdAsync(int id);
+        Task<bool> TemConflito(int pacienteId, int profissionalId, DateTime dataConsulta, TimeSpan horaConsulta);
     }
 }

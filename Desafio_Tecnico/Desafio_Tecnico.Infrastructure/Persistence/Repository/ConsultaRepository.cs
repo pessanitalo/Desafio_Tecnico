@@ -1,6 +1,5 @@
 ﻿using Dapper;
 using Desafio_Tecnico.Application.Consulta.DTOs;
-using Desafio_Tecnico.Application.Profissional.DTOs;
 using Desafio_Tecnico.Domain.Entities;
 using Desafio_Tecnico.Domain.Repositories;
 using Desafio_Tecnico.Domain.ValueObjects;
@@ -64,6 +63,37 @@ namespace Desafio_Tecnico.Infrastructure.Persistence.Repository
                 result.PacienteId,
                 result.ProfissionalId
             );
+        }
+
+        public async Task<bool> TemConflito(
+                   int pacienteId,
+                   int profissionalId,
+                   DateTime dataConsulta,
+                   TimeSpan horaConsulta)
+        {
+            const string sql = @"
+                SELECT COUNT(*) 
+                FROM Consulta 
+                WHERE DataConsulta = @DataConsulta
+                AND HoraConsulta < @HoraFim
+                AND DATEADD(MINUTE, 30, HoraConsulta) >= @HoraInicio
+                AND (
+                    ProfissionalId = @ProfissionalId
+                    OR PacienteId = @PacienteId
+                )";
+
+            var count = await _connection.ExecuteScalarAsync<int>(
+                sql,
+                new
+                {
+                    PacienteId = pacienteId,
+                    ProfissionalId = profissionalId,
+                    DataConsulta = dataConsulta.Date,
+                    HoraInicio = horaConsulta,
+                    HoraFim = horaConsulta.Add(TimeSpan.FromMinutes(30))
+                });
+
+            return count > 0;
         }
 
         public async Task<Consulta> ObterPorIdAsync(int id)
