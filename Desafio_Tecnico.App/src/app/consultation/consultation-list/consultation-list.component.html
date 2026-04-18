@@ -1,0 +1,33 @@
+<div class="consultation-container">
+  <div class="consultation-header">
+    <h1>Listagem de Consultas</h1>
+    <a [routerLink]="['/consulta-novo']" class="btn-create">+ Nova Consulta</a>
+  </div>
+
+  <div class="consultation-content">
+    <table class="consultation-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Paciente</th>
+          <th>Profissional</th>
+          <th>Data</th>
+          <th>Hora</th>
+          <th>Agenda</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let consulta of consultations" class="consultation-row">
+          <td>{{ consulta.id }}</td>
+          <td>{{ consulta.pacienteNome }}</td>
+          <td>{{ consulta.profissionalNome }}</td>
+          <td>{{ consulta.dataConsulta | date: 'dd/MM/yyyy' }}</td>
+          <td>{{ consulta.horaConsulta }}</td>
+          <td>
+            <a [routerLink]="['/agenda-profissional', consulta.profissionalId]">Ver pacientes</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
