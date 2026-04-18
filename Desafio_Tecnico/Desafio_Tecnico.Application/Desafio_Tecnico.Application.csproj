@@ -7,8 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\" />
-    <Folder Include="UseCases\" />
+    <ProjectReference Include="..\Desafio_Tecnico.Domain\Desafio_Tecnico.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Token\UseCases\" />
   </ItemGroup>
 
 </Project>
