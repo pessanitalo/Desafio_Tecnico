@@ -1,6 +1,7 @@
 ﻿using Desafio_Tecnico.Application.Paciente.DTOs;
 using Desafio_Tecnico.Domain.Common;
 using Desafio_Tecnico.Domain.Repositories;
+using Desafio_Tecnico.Domain.Validation;
 using Microsoft.Extensions.Logging;
 
 
@@ -34,10 +35,10 @@ namespace Desafio_Tecnico.Application.Paciente.UseCases
 
                 return Result<DetalhesPacienteDTO>.Ok(pacienteDto);
             }
-            catch (Exception ex)
+            catch (DomainExceptionValidation ex)
             {
                 _logger.LogError(ex, "Não foi possível obter paciente.");
-                return Result<DetalhesPacienteDTO>.Fail($"Não foi possível obter paciente.");
+                return Result<DetalhesPacienteDTO>.Fail(ex.Message);
             }
         }
     }

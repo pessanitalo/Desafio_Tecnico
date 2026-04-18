@@ -2,6 +2,7 @@
 using Desafio_Tecnico.Application.Paciente.DTOs;
 using Desafio_Tecnico.Domain.Common;
 using Desafio_Tecnico.Domain.Repositories;
+using Desafio_Tecnico.Domain.Validation;
 using Microsoft.Extensions.Logging;
 
 
@@ -33,10 +34,10 @@ namespace Desafio_Tecnico.Application.Paciente.UseCases
                 });
                 return Result<IEnumerable<PacienteDTO>>.Ok(pacientesDto);
             }
-            catch (Exception ex)
+            catch (DomainExceptionValidation ex)
             {
                 _logger.LogError(ex, "Não foi possível obter todos os pacientes.");
-                return Result<IEnumerable<PacienteDTO>>.Fail($"Não foi possível obter todos os pacientes.");
+                return Result<IEnumerable<PacienteDTO>>.Fail(ex.Message);
             }
         }
     }
