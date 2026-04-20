@@ -1,0 +1,25 @@
+name: desafio_tecnico.app
+on:
+  push:
+    branches:
+      - main # executa os testes na branch main
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    outputs:
+      versao: ${{ steps.docker_build.outputs.tag}}
+
+    steps:
+     - name: Checkout
+       uses: actions/checkout@v4
+
+     - name: get npm cache directory
+       id: npm-cache-dir
+       shell: bash
+       run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
+
+     - uses: actions/cache@v4
+       id: npm-cache
+       with:
+        path: ${{ steps.npm-cache-dir.outputs.dir}}
+        key: npm-cache-dir-${{ hashFiles('**/package-lock.json')}}
