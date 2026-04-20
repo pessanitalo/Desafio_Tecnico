@@ -42,7 +42,6 @@ export class AgendaProfissionalComponent implements OnInit {
       consultations => {
         this.agenda = consultations;
         this.nomeProfissional = this.agenda[0]?.nomeProfissional || '';
-        // console.log('Consultas recebidas:', this.agenda);
       },
       error => console.log('Erro:', error)
     );

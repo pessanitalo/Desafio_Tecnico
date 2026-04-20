@@ -37,7 +37,6 @@ export class ConsultationListComponent implements OnInit {
     this.consultationService.list().subscribe(
       consultations => {
         this.consultations = consultations;
-        //console.log('Consultas recebidas:', this.consultations);
       },
       error => console.log('Erro:', error)
     );

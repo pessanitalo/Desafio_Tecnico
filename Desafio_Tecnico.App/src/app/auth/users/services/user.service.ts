@@ -14,7 +14,6 @@ export class UserService {
     constructor(private http: HttpClient) { }
 
     adicionar(user: User) {
-        console.log('post ', user);
         return this.http.post<User>(this.baseUrl, user);
     }
 }

@@ -76,7 +76,6 @@ export class ConsultationCreateComponent {
       horaConsulta: ['', [Validators.required]],
     });
     this.carregarHorarios();
-    console.log(this.Form.value);
   }
 
   buscarPaciente() {

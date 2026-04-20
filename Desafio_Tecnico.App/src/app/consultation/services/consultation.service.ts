@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { environment } from '../../../environments/environment';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Consultation } from '../models/consultation';
 import { ConsultationCreate } from '../models/consultation-create';
 import { ConsultationObterAgendaProfissional } from '../models/consultation-obterAgendaProfissional';
@@ -30,7 +30,6 @@ export class ConsultationService {
           horaConsulta: item.horaConsulta
         }))
       ),
-      //tap(result => console.log('Resultado mapeado:', result))
     );
   }
 
@@ -39,7 +38,6 @@ obteragendaProfissional(profissionalid: number): Observable<ConsultationObterAge
     `${this.baseUrl}/agenda-profissional/${profissionalid}`
   ).pipe(
     map(response => response.data),
-    //tap(result => console.log('Agenda:', result))
   );
 }
 
