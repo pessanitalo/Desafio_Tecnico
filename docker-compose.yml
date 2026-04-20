@@ -19,7 +19,7 @@ services:
 
   # .NET API
   desafio_api:
-    image: italopessan/desafio_api:latest
+    image: italopessan/desafio_tecnico.api:latest
     container_name: desafio-api
     build:
       context: .
@@ -27,7 +27,7 @@ services:
     environment:
       ASPNETCORE_URLS: http://+:80
       ASPNETCORE_ENVIRONMENT: Development
-      ConnectionStrings__DefaultConnection: "Server=sql-instance-demo.c5bubndthirq.us-east-1.rds.amazonaws.com,1433;Database=desafio_tecnico;User Id=demosqlserver;Password=*SE!48}A;TrustServerCertificate=True"
+      ConnectionStrings__DefaultConnection: "Server=sqlserver,1433;Database=desafio_tecnico;User Id=sa;Password=Numsey#2021;TrustServerCertificate=True"
     ports:
       - "5500:80"
     depends_on:
@@ -38,7 +38,7 @@ services:
 
   # Angular Frontend
   frontend:
-    image: desafio_front:latest
+    image: italopessan/desafio_tecnico.app:latest
     container_name: desafio-front
     build:
       context: ./Desafio_Tecnico.App
