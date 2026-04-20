@@ -36,6 +36,8 @@ namespace Desafio_Tecnico.Api.DependencyInjection
             services.AddScoped<IObterProfissionalUseCase, ObterProfissionalUseCase>();
             services.AddScoped<IObterProfissionalUseCase, ObterProfissionalUseCase>();
 
+            services.AddScoped<IFeriadoRepository, FeriadoRepository>();
+
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IPasswordHasherService, PasswordHasherService>();
             services.AddScoped<IObterAgendaPorProfissionalIdUseCase, ObterAgendaPorProfissionalIdUseCase>();
