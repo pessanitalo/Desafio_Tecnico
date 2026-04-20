@@ -44,4 +44,4 @@ jobs:
          AWS_DEFAULT_REGION: us-east-1
        run: |
         run: |
-        aws s3 sync Desafio_Tecnico.App/dist/desafio-tecnico.app s3://meu-desafio-app-081882787657/ --delete
+        aws s3 sync Desafio_Tecnico.App/dist/desafio-tecnico.app/browser s3://meu-desafio-app-081882787657/ --delete
