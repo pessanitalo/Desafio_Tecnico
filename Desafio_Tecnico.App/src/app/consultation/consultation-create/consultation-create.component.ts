@@ -4,7 +4,7 @@ import { AbstractControl, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGr
 import { Router, RouterLink } from '@angular/router';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { ToastrService } from 'ngx-toastr';
-import { Patiente } from '../../patient/models/patiente';
+import { Patient } from '../../patient/models/patiente';
 import { PatienteService } from '../../patient/services/patiente.service';
 import { Professional } from '../../professional/models/professional';
 import { ProfessionalService } from '../../professional/services/professionar.service';
@@ -24,7 +24,7 @@ import { NotificationService } from '../../shared/services/notificationService';
 export class ConsultationCreateComponent {
 
   Form!: UntypedFormGroup;
-  paciente!: Patiente;
+  paciente!: Patient;
   medico!: Professional;
   horarios: string[] = [];
   consulta!: Consultation;
