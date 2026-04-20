@@ -1,0 +1,11 @@
+.logout-link {
+    border-radius: 999px;
+    font-weight: 600;
+    line-height: 1;
+}
+
+.logout-link:hover,
+.logout-link:focus {
+    color: #fff;
+    opacity: 0.9;
+}
