@@ -8,8 +8,7 @@ RUN npm ci
 
 COPY . .
 
-RUN npm run build -- --configuration production
-
+RUN npm run build 
 
 ### Estágio 2 - Nginx ###
 FROM nginx:alpine
@@ -18,3 +17,4 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=front-end /app/dist/desafio-tecnico.app/browser  /usr/share/nginx/html
 
 EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
