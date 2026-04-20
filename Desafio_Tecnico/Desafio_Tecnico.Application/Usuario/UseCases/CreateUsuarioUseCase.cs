@@ -25,9 +25,14 @@ namespace Desafio_Tecnico.Application.Usuario.UseCases
         {
             try
             {
-                var senhaHash = _passwordHasher.Hash(usuarioDTO.Senha);
-                var profissional = UsuarioDomain.Criar(usuarioDTO.Email, senhaHash);
-                await _usuarioRepository.AddAsync(profissional);
+                var usuarioExistente = await _usuarioRepository.GetByEmail(usuarioDTO.Email);
+                if (usuarioExistente != null) return Result<string>.Fail("Já existe um usuario com esse e-mail.");
+
+                var usuario = UsuarioDomain.Criar(usuarioDTO.Email, usuarioDTO.Senha);
+                usuario.Senha = Domain.ValueObjects.Senha.ReconstituirDoRepository(
+                    _passwordHasher.Hash(usuario.Senha.Valor));
+
+                await _usuarioRepository.AddAsync(usuario);
                 return Result<string>.Ok("Usuario salvo com sucesso.");
             }
             catch (DomainExceptionValidation ex)
@@ -42,5 +47,4 @@ namespace Desafio_Tecnico.Application.Usuario.UseCases
             }
         }
     }
-
 }

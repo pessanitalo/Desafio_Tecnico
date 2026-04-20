@@ -49,7 +49,7 @@ namespace Desafio_Tecnico.Infrastructure.Persistence.Repository
             return new Usuario(
                 result.UsuarioId,
                 new Email(result.Email),
-                new Senha(result.Senha)
+                Senha.ReconstituirDoRepository(result.Senha)
             );
         }
     }
