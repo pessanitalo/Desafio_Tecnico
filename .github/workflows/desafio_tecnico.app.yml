@@ -23,3 +23,16 @@ jobs:
        with:
         path: ${{ steps.npm-cache-dir.outputs.dir}}
         key: npm-cache-dir-${{ hashFiles('**/package-lock.json')}}
+
+     - name: Setup Node.js
+       uses: actions/setup-node@v4
+       with:
+        node-version: '24'
+
+     - name: Install dependencias
+       run: npm ci
+       working-directory: Desafio_Tecnico.App  ## busca o nome onde esta as dependencias
+
+     - name: Build app
+       run: npm run build
+       working-directory: Desafio_Tecnico.App
