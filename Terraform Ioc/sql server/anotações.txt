@@ -1,0 +1,18 @@
+## Teste ok:
+
+### na hora da criação do db, pegar o ip publico.
+
+##lista todos os outputs
+   terraform output
+
+Comandos para exibir a senha:
+
+terraform output -raw db_password
+
+Comando para exibir a conexão do banco
+terraform output -raw connection_string
+
+senha 
+*SE!48}A
+
+Server=sql-instance-demo.c5bubndthirq.us-east-1.rds.amazonaws.com,1433;Database=master;User Id=demosqlserver;Password=*SE!48}A;
