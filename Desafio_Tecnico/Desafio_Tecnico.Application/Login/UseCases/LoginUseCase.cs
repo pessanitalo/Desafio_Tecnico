@@ -4,6 +4,7 @@ using Desafio_Tecnico.Domain.Common;
 using Desafio_Tecnico.Domain.Entities;
 using Desafio_Tecnico.Domain.Repositories;
 using Desafio_Tecnico.Domain.Service;
+using Desafio_Tecnico.Domain.Validation;
 using Microsoft.Extensions.Logging;
 
 
@@ -14,13 +15,15 @@ namespace Desafio_Tecnico.Application.Login.UseCases
 
         private readonly IRefreshTokenRepository _refreshTokenRepository;
         private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IPasswordHasherService _passwordHasher;
         private readonly ITokenService _tokenService;
         protected readonly ILogger<LoginUseCase> _logger;
 
-        public LoginUseCase(IRefreshTokenRepository refreshTokenRepository, IUsuarioRepository usuarioRepository, ILogger<LoginUseCase> logger, ITokenService tokenService)
+        public LoginUseCase(IRefreshTokenRepository refreshTokenRepository, IUsuarioRepository usuarioRepository, IPasswordHasherService passwordHasher, ILogger<LoginUseCase> logger, ITokenService tokenService)
         {
             _refreshTokenRepository = refreshTokenRepository;
             _usuarioRepository = usuarioRepository;
+            _passwordHasher = passwordHasher;
             _logger = logger;
             _tokenService = tokenService;
         }
@@ -29,15 +32,16 @@ namespace Desafio_Tecnico.Application.Login.UseCases
         {
             try
             {
-                // 1 buscar o usuario
                 var usuario = await _usuarioRepository.GetByEmail(dto.Email);
+                if (usuario == null) return Result<LoginResponse>.Fail("Usuário não encontrado.");
 
-                // 2 gerar o token eo refresh token
+                var valido = _passwordHasher.Verificar(dto.Senha, usuario.Senha.Valor);
+
+                if (!valido) return Result<LoginResponse>.Fail("Email ou senha inválidos.");
 
                 var token = _tokenService.GerarToken(usuario.UsuarioId, dto.Email);
                 var refresfToken = _tokenService.GerarRefreshToken();
 
-                // 3 salvar o refresh token
                 await _refreshTokenRepository.AddAsync(new RefreshToken
                 {
                     UsuarioId = usuario.UsuarioId,
@@ -47,7 +51,7 @@ namespace Desafio_Tecnico.Application.Login.UseCases
                 var response = new LoginResponse(token, refresfToken);
                 return Result<LoginResponse>.Ok(response);
             }
-            catch (Exception ex)
+            catch (DomainExceptionValidation ex)
             {
                 _logger.LogError(ex, "Erro ao realizar login.");
                 return Result<LoginResponse>.Fail("Erro ao realizar login.");
