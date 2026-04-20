@@ -6,8 +6,8 @@ namespace Desafio_Tecnico.Domain.Repositories
     {
         Task<Consulta> ObterPorIdAsync(int id);
         Task<IEnumerable<Consulta>> ObterTodasConsultasIdAsync();
-        Task<Consulta> GetByConsultaAgendada(int pacienteId, int profissionalId, DateTime dataConsulta, TimeSpan horaConsulta);
+        Task<Consulta> GetByConsultaAgendada(int pacienteId, int profissionalId, DateTime dataConsulta);
         Task<IEnumerable<Consulta>> ObterAgendaPorProfissionalIdAsync(int id);
-        Task<bool> TemConflito(int pacienteId, int profissionalId, DateTime dataConsulta, TimeSpan horaConsulta);
+        Task<bool> TemDisponibilidadeNoHorario(int pacienteId, int profissionalId, DateTime dataConsulta, TimeSpan horaConsulta);
     }
 }

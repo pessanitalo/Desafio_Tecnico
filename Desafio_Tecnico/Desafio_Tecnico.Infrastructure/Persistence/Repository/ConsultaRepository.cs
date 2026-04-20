@@ -34,15 +34,14 @@ namespace Desafio_Tecnico.Infrastructure.Persistence.Repository
             var id = await _connection.ExecuteAsync(sql, parametros);
         }
 
-        public async Task<Consulta> GetByConsultaAgendada(int pacienteId, int profissionalId, DateTime dataConsulta, TimeSpan horaConsulta)
+        public async Task<Consulta> GetByConsultaAgendada(int pacienteId, int profissionalId, DateTime dataConsulta)
         {
             const string sql = @"
                     SELECT * 
                     FROM Consulta 
                     WHERE PacienteId = @PacienteId
                     AND ProfissionalId =@ProfissionalId
-                    AND DataConsulta = @DataConsulta
-                    AND HoraConsulta = @HoraConsulta";
+                    AND DataConsulta = @DataConsulta";
 
             var result = await _connection.QueryFirstOrDefaultAsync<ConsultaDTO>(
                 sql,
@@ -50,8 +49,7 @@ namespace Desafio_Tecnico.Infrastructure.Persistence.Repository
                 {
                     PacienteId = pacienteId,
                     ProfissionalId = profissionalId,
-                    DataConsulta = dataConsulta.Date,
-                    HoraConsulta = horaConsulta
+                    DataConsulta = dataConsulta.Date
                 });
 
             if (result == null)
@@ -65,7 +63,7 @@ namespace Desafio_Tecnico.Infrastructure.Persistence.Repository
             );
         }
 
-        public async Task<bool> TemConflito(
+        public async Task<bool> TemDisponibilidadeNoHorario(
                    int pacienteId,
                    int profissionalId,
                    DateTime dataConsulta,
@@ -165,6 +163,7 @@ namespace Desafio_Tecnico.Infrastructure.Persistence.Repository
             }
             return consultas;
         }
+
 
         public async Task<IEnumerable<Consulta>> ObterAgendaPorProfissionalIdAsync(int profissionalId)
         {

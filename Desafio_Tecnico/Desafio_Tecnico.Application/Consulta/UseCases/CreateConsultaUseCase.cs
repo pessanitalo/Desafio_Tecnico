@@ -10,11 +10,13 @@ namespace Desafio_Tecnico.Application.Consulta.UseCases
     public class CreateConsultaUseCase : ICreateConsultaUseCase
     {
         private readonly IConsultaRepository _consultaRepository;
+        private readonly IFeriadoRepository _feriadoRepository;
         protected readonly ILogger<CreateConsultaUseCase> _logger;
 
-        public CreateConsultaUseCase(IConsultaRepository consultaRepository, ILogger<CreateConsultaUseCase> logger)
+        public CreateConsultaUseCase(IConsultaRepository consultaRepository, ILogger<CreateConsultaUseCase> logger, IFeriadoRepository feriadoRepository)
         {
             _consultaRepository = consultaRepository;
+            _feriadoRepository = feriadoRepository;
             _logger = logger;
         }
 
@@ -22,18 +24,26 @@ namespace Desafio_Tecnico.Application.Consulta.UseCases
         {
             try
             {
-                var temConflito = await _consultaRepository.TemConflito(
+                // o usuario não pode ter duas consultas no mesmo horário, mesmo profissional ou paciente.
+                var consultaExistente = await _consultaRepository.GetByConsultaAgendada(
+                            consultaDTO.PacienteId,
+                            consultaDTO.ProfissionalId,
+                            consultaDTO.DataConsulta);
+
+                if (consultaExistente != null) return Result<string>.Fail("O usuario já possui uma consulta agendada neste dia.");
+
+                var ehFeriado = await _feriadoRepository.EhFeriadoAsync(consultaDTO.DataConsulta);
+
+                if (ehFeriado) return Result<string>.Fail("Data indisponível.");
+
+
+                var temDisponibilidadeNoHorario = await _consultaRepository.TemDisponibilidadeNoHorario(
                             consultaDTO.PacienteId,
                             consultaDTO.ProfissionalId,
                             consultaDTO.DataConsulta,
                             consultaDTO.HoraConsulta);
 
-                if (temConflito)
-                {
-                    return Result<string>.Fail(
-                        "Já existe uma consulta agendada neste horário");
-                }
-                ;
+                if (temDisponibilidadeNoHorario) return Result<string>.Fail("Já existe uma consulta agendada neste horário");
 
                 var consulta = ConsultaDomain.Criar(consultaDTO.DataConsulta, consultaDTO.HoraConsulta, consultaDTO.PacienteId, consultaDTO.ProfissionalId);
 
