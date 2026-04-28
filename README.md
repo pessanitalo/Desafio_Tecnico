@@ -63,11 +63,6 @@ Execute os scripts na ferramenta de acesso ao banco de dados.
 | **Swagger (API)** | http://localhost:5500/swagger/index.html |
 | **Frontend** | http://localhost:4200/login |
 
-### Produção (AWS)
-
-```
-http://meu-desafio-app-081882787657.s3-website-us-east-1.amazonaws.com/login
-```
 
 ---
 
