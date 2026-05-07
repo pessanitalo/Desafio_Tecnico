@@ -8,11 +8,10 @@ import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 
 @Component({
-  selector: 'app-agenda-profissional',
-  standalone: true,
-  imports: [CommonModule, CommonModule, ReactiveFormsModule, RouterLink, NgxMaskDirective, NgxMaskPipe, FormsModule],
-  templateUrl: './agenda-profissional.component.html',
-  styleUrl: './agenda-profissional.component.css'
+    selector: 'app-agenda-profissional',
+    imports: [CommonModule, CommonModule, ReactiveFormsModule, RouterLink, NgxMaskDirective, NgxMaskPipe, FormsModule],
+    templateUrl: './agenda-profissional.component.html',
+    styleUrl: './agenda-profissional.component.css'
 })
 export class AgendaProfissionalComponent implements OnInit {
   agenda: ConsultationObterAgendaProfissional[] = [];

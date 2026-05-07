@@ -7,11 +7,10 @@ import { NotificationService } from '../../../shared/services/notificationServic
 import { Login } from '../models/login';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+    selector: 'app-login',
+    imports: [CommonModule, ReactiveFormsModule, RouterLink],
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.css'
 })
 export class LoginComponent {
   Form!: UntypedFormGroup;

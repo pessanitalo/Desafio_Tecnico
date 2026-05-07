@@ -14,11 +14,10 @@ interface Consulta {
 }
 
 @Component({
-  selector: 'app-consultation-list',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './consultation-list.component.html',
-  styleUrl: './consultation-list.component.css'
+    selector: 'app-consultation-list',
+    imports: [CommonModule, RouterModule],
+    templateUrl: './consultation-list.component.html',
+    styleUrl: './consultation-list.component.css'
 })
 export class ConsultationListComponent implements OnInit {
 

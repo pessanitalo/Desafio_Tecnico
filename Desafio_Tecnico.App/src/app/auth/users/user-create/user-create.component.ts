@@ -7,11 +7,10 @@ import { Router } from '@angular/router';
 import { User } from '../models/user';
 
 @Component({
-  selector: 'app-user-create',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  templateUrl: './user-create.component.html',
-  styleUrl: './user-create.component.css'
+    selector: 'app-user-create',
+    imports: [CommonModule, ReactiveFormsModule],
+    templateUrl: './user-create.component.html',
+    styleUrl: './user-create.component.css'
 })
 export class UserCreateComponent {
   Form!: UntypedFormGroup;

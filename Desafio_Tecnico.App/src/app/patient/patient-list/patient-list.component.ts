@@ -6,11 +6,10 @@ import { RouterLink } from '@angular/router';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 @Component({
-  selector: 'app-patient-list',
-  standalone: true,
-  imports: [CommonModule, RouterLink, NgxMaskDirective, NgxMaskPipe],
-  templateUrl: './patient-list.component.html',
-  styleUrl: './patient-list.component.css'
+    selector: 'app-patient-list',
+    imports: [CommonModule, RouterLink, NgxMaskDirective, NgxMaskPipe],
+    templateUrl: './patient-list.component.html',
+    styleUrl: './patient-list.component.css'
 })
 export class PatientListComponent implements OnInit {
 

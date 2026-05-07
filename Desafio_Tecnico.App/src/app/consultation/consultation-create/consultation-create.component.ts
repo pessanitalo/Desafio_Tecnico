@@ -15,11 +15,10 @@ import { HorarioService } from '../services/horario.service';
 import { NotificationService } from '../../shared/services/notificationService';
 
 @Component({
-  selector: 'app-consultation-create',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink, NgxMaskDirective, NgxMaskPipe],
-  templateUrl: './consultation-create.component.html',
-  styleUrl: './consultation-create.component.css'
+    selector: 'app-consultation-create',
+    imports: [CommonModule, ReactiveFormsModule, RouterLink, NgxMaskDirective, NgxMaskPipe],
+    templateUrl: './consultation-create.component.html',
+    styleUrl: './consultation-create.component.css'
 })
 export class ConsultationCreateComponent {
 

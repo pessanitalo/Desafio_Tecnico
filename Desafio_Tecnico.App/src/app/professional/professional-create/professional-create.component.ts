@@ -9,11 +9,10 @@ import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { NotificationService } from '../../shared/services/notificationService';
 
 @Component({
-  selector: 'app-professional-create',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink, NgxMaskDirective, NgxMaskPipe],
-  templateUrl: './professional-create.component.html',
-  styleUrl: './professional-create.component.css'
+    selector: 'app-professional-create',
+    imports: [CommonModule, ReactiveFormsModule, RouterLink, NgxMaskDirective, NgxMaskPipe],
+    templateUrl: './professional-create.component.html',
+    styleUrl: './professional-create.component.css'
 })
 export class ProfessionalCreateComponent {
   Form!: UntypedFormGroup;

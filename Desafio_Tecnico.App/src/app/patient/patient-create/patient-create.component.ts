@@ -9,11 +9,10 @@ import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { NotificationService } from '../../shared/services/notificationService';
 
 @Component({
-  selector: 'app-patient-create',
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink, NgxMaskDirective, NgxMaskPipe],
-  templateUrl: './patient-create.component.html',
-  styleUrl: './patient-create.component.css'
+    selector: 'app-patient-create',
+    imports: [CommonModule, ReactiveFormsModule, RouterLink, NgxMaskDirective, NgxMaskPipe],
+    templateUrl: './patient-create.component.html',
+    styleUrl: './patient-create.component.css'
 })
 export class PatientCreateComponent {
 

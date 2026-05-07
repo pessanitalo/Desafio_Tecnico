@@ -6,11 +6,10 @@ import { RouterLink } from '@angular/router';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 @Component({
-  selector: 'app-professional-list',
-  standalone: true,
-  imports: [CommonModule, RouterLink, NgxMaskDirective, NgxMaskPipe],
-  templateUrl: './professional-list.component.html',
-  styleUrl: './professional-list.component.css'
+    selector: 'app-professional-list',
+    imports: [CommonModule, RouterLink, NgxMaskDirective, NgxMaskPipe],
+    templateUrl: './professional-list.component.html',
+    styleUrl: './professional-list.component.css'
 })
 export class ProfessionalListComponent implements OnInit {
 
