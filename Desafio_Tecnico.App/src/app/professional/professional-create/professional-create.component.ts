@@ -3,14 +3,14 @@ import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators }
 import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Professional } from '../models/professional';
-import { CommonModule } from '@angular/common';
+
 import { ProfessionalService } from '../services/professionar.service';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 import { NotificationService } from '../../shared/services/notificationService';
 
 @Component({
     selector: 'app-professional-create',
-    imports: [CommonModule, ReactiveFormsModule, RouterLink, NgxMaskDirective, NgxMaskPipe],
+    imports: [ReactiveFormsModule, RouterLink, NgxMaskDirective, NgxMaskPipe],
     templateUrl: './professional-create.component.html',
     styleUrl: './professional-create.component.css'
 })

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { Patient } from '../models/patiente';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
@@ -10,7 +10,7 @@ import { NotificationService } from '../../shared/services/notificationService';
 
 @Component({
     selector: 'app-patient-create',
-    imports: [CommonModule, ReactiveFormsModule, RouterLink, NgxMaskDirective, NgxMaskPipe],
+    imports: [ReactiveFormsModule, RouterLink, NgxMaskDirective, NgxMaskPipe],
     templateUrl: './patient-create.component.html',
     styleUrl: './patient-create.component.css'
 })

@@ -17,40 +17,48 @@
 
   <div class="row">
     <div class="col-lg-10 col-md-12 mx-auto">
-      <div *ngIf="carregando" class="agenda-feedback">
-        Carregando pacientes...
-      </div>
+      @if (carregando) {
+        <div class="agenda-feedback">
+          Carregando pacientes...
+        </div>
+      }
 
-      <div *ngIf="!carregando && errorMessage" class="agenda-feedback agenda-feedback-error">
-        {{ errorMessage }}
-      </div>
+      @if (!carregando && errorMessage) {
+        <div class="agenda-feedback agenda-feedback-error">
+          {{ errorMessage }}
+        </div>
+      }
 
-      <div *ngIf="!carregando && !errorMessage" class="table-responsive">
-        <table *ngIf="agenda.length > 0; else semPacientes" class="table table-hover align-middle">
-          <thead class="table-light">
-            <tr>
-              <th class="ps-4">Paciente ID</th>
-              <th>Paciente</th>
-              <th>Data</th>
-              <th>Hora</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of agenda" class="border-bottom">
-              <td class="ps-4 fw-500">#{{ item.pacienteId }}</td>
-              <td>{{ item.nomePaciente }}</td>
-              <td>{{ item.data | date:'dd/MM/yyyy' }}</td>
-              <td>{{ item.hora.substring(0, 5) }}</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <ng-template #semPacientes>
-          <div class="agenda-feedback">
-            Nenhum paciente encontrado para este profissional.
-          </div>
-        </ng-template>
-      </div>
+      @if (!carregando && !errorMessage) {
+        <div class="table-responsive">
+          @if (agenda.length > 0) {
+            <table class="table table-hover align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th class="ps-4">Paciente ID</th>
+                  <th>Paciente</th>
+                  <th>Data</th>
+                  <th>Hora</th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (item of agenda; track item) {
+                  <tr class="border-bottom">
+                    <td class="ps-4 fw-500">#{{ item.pacienteId }}</td>
+                    <td>{{ item.nomePaciente }}</td>
+                    <td>{{ item.data | date:'dd/MM/yyyy' }}</td>
+                    <td>{{ item.hora.substring(0, 5) }}</td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          } @else {
+            <div class="agenda-feedback">
+              Nenhum paciente encontrado para este profissional.
+            </div>
+          }
+        </div>
+      }
     </div>
   </div>
 </div>

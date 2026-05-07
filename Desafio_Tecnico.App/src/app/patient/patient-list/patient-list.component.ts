@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Patient } from '../models/patiente';
 import { PatienteService } from '../services/patiente.service';
-import { CommonModule } from '@angular/common';
+
 import { RouterLink } from '@angular/router';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 @Component({
     selector: 'app-patient-list',
-    imports: [CommonModule, RouterLink, NgxMaskDirective, NgxMaskPipe],
+    imports: [RouterLink, NgxMaskDirective, NgxMaskPipe],
     templateUrl: './patient-list.component.html',
     styleUrl: './patient-list.component.css'
 })

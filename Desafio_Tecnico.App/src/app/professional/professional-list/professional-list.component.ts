@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Professional } from '../models/professional';
 import { ProfessionalService } from '../services/professionar.service';
-import { CommonModule } from '@angular/common';
+
 import { RouterLink } from '@angular/router';
 import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 @Component({
     selector: 'app-professional-list',
-    imports: [CommonModule, RouterLink, NgxMaskDirective, NgxMaskPipe],
+    imports: [RouterLink, NgxMaskDirective, NgxMaskPipe],
     templateUrl: './professional-list.component.html',
     styleUrl: './professional-list.component.css'
 })

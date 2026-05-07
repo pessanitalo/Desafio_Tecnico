@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { MenuComponent } from './navegacao/menu/menu.component';
@@ -6,7 +6,7 @@ import { filter } from 'rxjs';
 
 @Component({
     selector: 'app-root',
-    imports: [CommonModule, RouterOutlet, MenuComponent, RouterLink],
+    imports: [RouterOutlet, MenuComponent, RouterLink],
     templateUrl: './app.component.html',
     styleUrl: './app.component.css'
 })

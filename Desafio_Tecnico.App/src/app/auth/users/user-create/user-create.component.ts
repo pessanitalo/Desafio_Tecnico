@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
@@ -8,7 +8,7 @@ import { User } from '../models/user';
 
 @Component({
     selector: 'app-user-create',
-    imports: [CommonModule, ReactiveFormsModule],
+    imports: [ReactiveFormsModule],
     templateUrl: './user-create.component.html',
     styleUrl: './user-create.component.css'
 })

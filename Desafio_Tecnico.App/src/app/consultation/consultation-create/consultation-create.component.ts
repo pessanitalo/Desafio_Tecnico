@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component } from '@angular/core';
 import { AbstractControl, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
@@ -16,7 +16,7 @@ import { NotificationService } from '../../shared/services/notificationService';
 
 @Component({
     selector: 'app-consultation-create',
-    imports: [CommonModule, ReactiveFormsModule, RouterLink, NgxMaskDirective, NgxMaskPipe],
+    imports: [ReactiveFormsModule, RouterLink, NgxMaskDirective, NgxMaskPipe],
     templateUrl: './consultation-create.component.html',
     styleUrl: './consultation-create.component.css'
 })

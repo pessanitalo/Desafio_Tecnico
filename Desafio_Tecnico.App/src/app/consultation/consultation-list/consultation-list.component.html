@@ -17,16 +17,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let consulta of consultations" class="consultation-row">
-          <td>{{ consulta.id }}</td>
-          <td>{{ consulta.pacienteNome }}</td>
-          <td>{{ consulta.profissionalNome }}</td>
-          <td>{{ consulta.dataConsulta | date: 'dd/MM/yyyy' }}</td>
-          <td>{{ consulta.horaConsulta }}</td>
-          <td>
-            <a [routerLink]="['/agenda-profissional', consulta.profissionalId]">Ver pacientes</a>
-          </td>
-        </tr>
+        @for (consulta of consultations; track consulta) {
+          <tr class="consultation-row">
+            <td>{{ consulta.id }}</td>
+            <td>{{ consulta.pacienteNome }}</td>
+            <td>{{ consulta.profissionalNome }}</td>
+            <td>{{ consulta.dataConsulta | date: 'dd/MM/yyyy' }}</td>
+            <td>{{ consulta.horaConsulta }}</td>
+            <td>
+              <a [routerLink]="['/agenda-profissional', consulta.profissionalId]">Ver pacientes</a>
+            </td>
+          </tr>
+        }
       </tbody>
     </table>
   </div>

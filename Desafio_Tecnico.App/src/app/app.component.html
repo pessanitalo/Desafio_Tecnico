@@ -1,4 +1,6 @@
-<app-menu *ngIf="showMenu"></app-menu>
+@if (showMenu) {
+  <app-menu></app-menu>
+}
 <div>
-    <router-outlet></router-outlet>
+  <router-outlet></router-outlet>
 </div>
