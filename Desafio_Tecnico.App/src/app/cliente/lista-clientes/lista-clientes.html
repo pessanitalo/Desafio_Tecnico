@@ -1,0 +1,35 @@
+<div class="p-8 bg-gray-50 min-h-screen">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex justify-between items-center mb-6">
+      <h1 class="text-3xl font-extrabold text-gray-900 tracking-tight">Lista de Clientes</h1>
+      <button routerLink="/cadastro-cliente" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded-lg shadow-sm transition-colors duration-200">
+        Novo Cliente
+      </button>
+    </div>
+
+    <div class="mat-elevation-z2 rounded-xl overflow-hidden bg-white">
+      <table mat-table [dataSource]="clients" class="w-full">
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50"> Nome </th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50"> Email </th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"> {{element.email}} </td>
+        </ng-container>
+
+        <!-- CreatedAt Column -->
+        <ng-container matColumnDef="createdAt">
+          <th mat-header-cell *matHeaderCellDef class="px-6 py-4 text-left text-xs font-bold text-gray-500 uppercase tracking-wider bg-gray-50"> Data de Criação </th>
+          <td mat-cell *matCellDef="let element" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500"> {{element.createdAt | date:'dd/MM/yyyy'}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="hover:bg-indigo-50 transition-colors duration-150 border-b border-gray-100 last:border-0"></tr>
+      </table>
+    </div>
+  </div>
+</div>
